@@ -112,6 +112,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'userena.middleware.UserenaLocaleMiddleware',
 )
 
 ROOT_URLCONF = 'project.urls'
@@ -133,12 +134,16 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     # Third party apps
-
+    'easy_thumbnails',
+    'guardian',
+    'south',
+    'userena',
     # Local apps
+    'account',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -171,3 +176,29 @@ LOGGING = {
         },
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('en', gettext('English')),
+    ('zh-tw', gettext('Traditional Chinese')),
+)
+
+ANONYMOUS_USER_ID = -1
+
+AUTH_PROFILE_MODULE = 'account.Profile'
+
+LOGIN_REDIRECT_URL = '/account/%(username)s/'
+
+USERENA_SIGNIN_REDIRECT_URL = LOGIN_REDIRECT_URL
+
+LOGIN_URL = '/account/signin/'
+
+LOGOUT_URL = '/account/signout/'
+
+USERENA_DEFAULT_PRIVACY = 'open'
