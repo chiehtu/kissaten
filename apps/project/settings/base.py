@@ -124,6 +124,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    PROJECT_ROOT.child('apps').child('project').child('templates')
 )
 
 INSTALLED_APPS = (
@@ -144,6 +145,7 @@ INSTALLED_APPS = (
     'userena',
     # Local apps
     'account',
+    'forum',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
