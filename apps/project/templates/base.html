@@ -1,3 +1,4 @@
+{% load compress i18n %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,8 +6,60 @@
     <title>{{ SITE_TITLE }}</title>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    {% compress css %}
+    <link type="text/less" href="{{ STATIC_URL }}forum/stylesheets/style.less"  rel="stylesheet">
+    {% endcompress css %}
 </head>
 <body>
+    <header class="navbar navbar-default navbar-fixed-top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{% url 'forum_index' %}" class="navbar-brand">{{ SITE_TITLE }}</a>
+            </div>
+            <nav class="navbar-collapse collapse" role="navigation" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'forum_index' %}">{% trans "Home" %}</a></li>
+                    <li><a href="{% url 'userena_profile_list' %}">{% trans "Members" %}</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                {% else %}
+                    <li><a href="{% url 'userena_signup' %}">{% trans "Signup" %}</a></li>
+                    <li><a href="{% url 'userena_signin' %}">{% trans "Signin" %}</a></li>
+                {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        {% block main %}
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+
+                {% endblock content %}
+            </div>
+            <div class="col-md-4">
+                <aside>
+                {% block sidebar %}
+
+                {% endblock sidebar %}
+                </aside>
+            </div>
+        </div>
+        {% endblock main %}
+    </div>
+    <footer class="footer">
+        <div class="container">
+
+        </div>
+    </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 </body>

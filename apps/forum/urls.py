@@ -11,6 +11,5 @@ topic_patterns = patterns(
 urlpatterns = patterns(
     '',
     url(r'^$', ForumIndexView.as_view(), name='forum_index'),
-
     (r'^topic/', include(topic_patterns)),
 )

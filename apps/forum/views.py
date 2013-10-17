@@ -8,6 +8,7 @@ class ForumIndexView(ArchiveIndexView):
     model = Topic
     date_field = 'last_reply_on'
     allow_empty = True
+    paginate_by = 10
     template_name = 'forum/index.html'
 
 
