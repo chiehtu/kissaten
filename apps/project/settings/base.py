@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     # Third party apps
     'compressor',
+    'crispy_forms',
     'easy_thumbnails',
     'guardian',
     'south',
@@ -213,3 +214,5 @@ USERENA_MUGSHOT_DEFAULT = 'identicon'
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

@@ -6,13 +6,13 @@ from django.utils.translation import ugettext as _
 
 class Node(models.Model):
 
-    name = models.CharField(_('name'), max_length=50)
+    name = models.CharField(_('name'), max_length=50, unique=True)
     description = models.TextField(_('description'))
 
     num_topics = models.IntegerField(_('number of topics'), default=0)
 
     created_on = models.DateTimeField(_('created on'), auto_now_add=True)
-    updated_on = models.DateTimeField(_('updated on'), auto_now=True)
+    updated_on = models.DateTimeField(_('updated on'), blank=True, null=True)
 
     class Meta:
         verbose_name = _('node')
@@ -20,6 +20,9 @@ class Node(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('node_detail', kwargs={'name_slug': self.name})
 
 
 class Topic(models.Model):
@@ -40,13 +43,14 @@ class Topic(models.Model):
     num_hits = models.IntegerField(_('number of hits'), default=0)
     num_replies = models.IntegerField(_('number of replies'), default=0)
 
-    last_reply_on = models.DateTimeField(_('last reply on'))
+    last_reply_on = models.DateTimeField(_('last reply on'),
+                                         blank=True, null=True)
 
     locked = models.BooleanField(_('locked'), default=False)
     sticky = models.BooleanField(_('sticky'), default=False)
 
     created_on = models.DateTimeField(_('created on'), auto_now_add=True)
-    updated_on = models.DateTimeField(_('updated on'), auto_now=True)
+    updated_on = models.DateTimeField(_('updated on'), blank=True, null=True)
 
     class Meta:
         verbose_name = _('topic')
@@ -75,7 +79,7 @@ class Reply(models.Model):
     content = models.TextField(_('content'))
 
     created_on = models.DateTimeField(_('created on'), auto_now_add=True)
-    updated_on = models.DateTimeField(_('updated on'), auto_now=True)
+    updated_on = models.DateTimeField(_('updated on'), blank=True, null=True)
 
     class Meta:
         verbose_name = _('reply')

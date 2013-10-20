@@ -1,6 +1,7 @@
 {% extends "base.html" %}
-{% load humanize i18n %}
+{% load i18n %}
 {% block content %}
+    {% include "module/topic_list.html" %}
     {% include "module/pagination.html" %}
 {% endblock content %}
 {% block sidebar %}
