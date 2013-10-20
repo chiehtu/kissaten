@@ -1,0 +1,15 @@
+{% load humanize %}
+<div class="topics">
+    {% for topic in latest %}
+        <div class="topic">
+            <a href="{% url 'userena_profile_detail' topic.author.username %}" class="avatar"><img src="{{ topic.author.profile.get_mugshot_url }}" alt=""></a>
+            <h3 class="title"><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></h3>
+            <div class="meta">
+                <a href="{% url 'userena_profile_detail' topic.author.username %}" class="author">{{ topic.author.username }}</a>
+                <a href="{{ topic.node.get_absolute_url }}" class="node">{{ topic.node.name }}</a>
+                <div class="counter">{{ topic.num_replies }} / {{ topic.num_hits }}</div>
+            </div>
+            <div class="last_reply_on pull-right">{{ topic.last_reply_on|naturaltime }}</div>
+        </div>
+    {% endfor %}
+</div>

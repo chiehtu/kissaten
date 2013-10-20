@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    <p>{{ object.content }}</p>
+    {% if object.replies.count %}
+        {% for reply in object.replies.all %}
+            <p>{{ reply.content }}</p>
+        {% endfor %}
+    {% endif %}
+    <form action="{% url 'reply_create' object.id %}" method="post">{% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="Submit" />
+    </form>
+{% endblock content %}
