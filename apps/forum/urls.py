@@ -1,10 +1,10 @@
 from django.conf.urls import patterns, include, url
 
-from forum.views import (ForumIndexView, TopicCreateView,
-                         TopicDetailView, TopicEditView,
-                         ReplyCreateView, ReplyEditView,
-                         NodeIndexView, NodeCreateView,
-                         NodeEditView, NodeDetailView)
+from forum.views.node import (NodeIndexView, NodeCreateView,
+                              NodeEditView, NodeDetailView)
+from forum.views.topic import (ForumIndexView, TopicCreateView,
+                               TopicDetailView, TopicEditView)
+from forum.views.reply import ReplyCreateView, ReplyEditView
 
 
 topic_patterns = patterns(
