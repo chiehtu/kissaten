@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load markdown %}
 {% block content %}
-    <p>{{ object.content }}</p>
+    <p>{{ object.content|markdown|safe }}</p>
     {% if object.replies.count %}
         {% for reply in object.replies.all %}
             <p>{{ reply.content }}</p>

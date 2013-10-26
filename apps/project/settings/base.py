@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     # Third party apps
     'compressor',
     'crispy_forms',
+    'django_misaka',
     'easy_thumbnails',
     'guardian',
     'south',
