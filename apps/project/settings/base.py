@@ -62,12 +62,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = PROJECT_ROOT.child('media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -141,8 +141,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'django.contrib.humanize',
     # Third party apps
+    'bootstrapform',
     'compressor',
-    'crispy_forms',
     'django_misaka',
     'easy_thumbnails',
     'guardian',
@@ -200,7 +200,7 @@ ANONYMOUS_USER_ID = -1
 
 AUTH_PROFILE_MODULE = 'account.Profile'
 
-LOGIN_REDIRECT_URL = '/account/%(username)s/'
+LOGIN_REDIRECT_URL = '/'
 
 USERENA_SIGNIN_REDIRECT_URL = LOGIN_REDIRECT_URL
 
@@ -210,10 +210,6 @@ LOGOUT_URL = '/account/signout/'
 
 USERENA_DEFAULT_PRIVACY = 'open'
 
-USERENA_MUGSHOT_DEFAULT = 'identicon'
-
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
 )
-
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
