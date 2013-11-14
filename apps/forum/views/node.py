@@ -18,6 +18,12 @@ class NodeCreateView(LoginRequiredMixin, CreateView):
     form_class = NodeForm
     template_name = 'forum/node_create_form.html'
 
+    def get(self, request, *args, **kwargs):
+        if not self.request.user.is_staff:
+            raise Http404
+
+        return super(NodeCreateView, self).get(request, *args, **kwargs)
+
 
 class NodeDetailView(SingleObjectMixin, ListView):
     paginate_by = 10
