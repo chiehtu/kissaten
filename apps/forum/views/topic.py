@@ -1,5 +1,5 @@
+from datetime import datetime
 from django.views.generic.detail import SingleObjectMixin
-from django.views.generic.dates import ArchiveIndexView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
@@ -10,10 +10,8 @@ from forum.forms import TopicForm, ReplyForm
 from forum.models import Topic
 
 
-class ForumIndexView(ArchiveIndexView):
+class ForumIndexView(ListView):
     model = Topic
-    date_field = 'last_reply_on'
-    allow_empty = True
     paginate_by = 10
     template_name = 'forum/index.html'
 
@@ -26,6 +24,7 @@ class TopicCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.author = self.request.user
         self.object.author_ip = self.request.META['REMOTE_ADDR']
+        self.object.last_reply_on = datetime.now()
 
         return super(TopicCreateView, self).form_valid(form)
 

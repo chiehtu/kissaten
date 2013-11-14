@@ -56,6 +56,7 @@ class Topic(models.Model):
         verbose_name = _('topic')
         verbose_name_plural = _('topics')
         get_latest_by = 'created_on'
+        ordering = ['-last_reply_on']
 
     def __unicode__(self):
         return self.title
