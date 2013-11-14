@@ -1,5 +1,3 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
-    {% crispy form %}
-{% endblock content %}
+{% extends "forum/topic_create_form.html" %}
+{% load i18n %}
+{% block subtitle %}{% trans "Edit topic" %}{% endblock subtitle %}

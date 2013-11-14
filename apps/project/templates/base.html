@@ -3,15 +3,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ SITE_TITLE }}</title>
+    <title>{% block title %}{% block subtitle %}{% endblock subtitle %} | {{ site.name }}{% endblock title %}</title>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
     {% compress css %}
     <link type="text/less" href="{{ STATIC_URL }}forum/stylesheets/style.less"  rel="stylesheet">
+    <link type="text/css" href="{{ STATIC_URL }}forum/stylesheets/pygments.css" rel="stylesheet">
     {% endcompress css %}
 </head>
 <body>
-    <header class="navbar navbar-default" role="banner">
+    <header class="navbar navbar-inverse" role="banner">
         <div class="container">
             <div class="navbar-header">
                 <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,14 +27,14 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'forum_index' %}">{% trans "Home" %}</a></li>
                     <li><a href="{% url 'node_index' %}">{% trans "Node" %}</a></li>
-                    <li><a href="{% url 'userena_profile_list' %}">{% trans "Members" %}</a></li>
+                    <li><a href="{% url 'userena_profile_list' %}">{% trans "Member" %}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     {% if user.is_staff %}
-                        <li><a href="{% url 'node_create' %}">{% trans "Create node" %}</a></li>
+                        <li><a href="{% url 'node_create' %}">{% trans "New node" %}</a></li>
                     {% endif %}
-                    <li><a href="{% url 'topic_create' %}">{% trans "Create topic" %}</a></li>
+                    <li><a href="{% url 'topic_create' %}">{% trans "New topic" %}</a></li>
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -74,5 +75,8 @@
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    {% block js %}
+
+    {% endblock js %}
 </body>
 </html>

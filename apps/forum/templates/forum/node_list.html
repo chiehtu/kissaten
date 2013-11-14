@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block subtitle %}{% trans "Node" %}{% endblock subtitle %}
+{% block content %}
+<div class="module">
+    <div class="module-header">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'forum_index' %}">{% trans "Home" %}</a></li>
+            <li class="active">{% trans "Node" %}</li>
+        </ol>
+    </div>
+    <div class="module-body">
+        <div class="items">
+        {% for node in object_list %}
+            <div class="item">
+                <h3 class="title"><a href="{% url 'node_detail' node.name %}">{{ node.name }}</a></h3>
+                <div class="meta">
+                    {% blocktrans with topics=node.topics.all|length %}
+                        Topics({{ topics }})
+                    {% endblocktrans %}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block sidebar %}
+
+{% endblock sidebar %}

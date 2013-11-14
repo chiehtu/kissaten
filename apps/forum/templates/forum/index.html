@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% block title %}{{ site.name }}{% endblock title %}
 {% block content %}
-    {% include "module/topic_list.html" %}
+<div class="module">
+    <div class="module-header">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'forum_index' %}">{% trans "Home" %}</a></li>
+            <li class="active">{% trans "Latest posts" %}</li>
+        </ol>
+    </div>
+    {% include "module/topic_list.html" with show_node=True %}
+    <div class="module-footer">
     {% include "module/pagination.html" %}
+    </div>
+</div>
 {% endblock content %}
-{% block sidebar %}
-
-{% endblock sidebar %}

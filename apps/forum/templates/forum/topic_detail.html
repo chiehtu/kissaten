@@ -1,14 +1,81 @@
 {% extends "base.html" %}
-{% load markdown %}
+{% load humanize i18n bootstrap markdown %}
+{% block subtitle %}{{ object.title }}{% endblock subtitle %}
 {% block content %}
-    <p>{{ object.content|markdown|safe }}</p>
-    {% if object.replies.count %}
-        {% for reply in object.replies.all %}
-            <p>{{ reply.content }}</p>
-        {% endfor %}
-    {% endif %}
-    <form action="{% url 'reply_create' object.id %}" method="post">{% csrf_token %}
-        {{ form.as_p }}
-    <input type="submit" value="Submit" />
-    </form>
+<article class="module">
+    <header class="module-header inner">
+        <h1>{{ object.title }}</h1>
+            <div class="meta">
+            <a href="{% url 'userena_profile_detail' object.author.username %}" class="avatar"><img src="{{ object.author.profile.get_mugshot_url }}" alt=""></a>
+            <a href="{% url 'userena_profile_detail' object.author.username %}" class="author">{{ object.author.username }}</a>
+            &middot;
+            <div class="created-on">{{ object.created_on|naturaltime }}</div>
+            &middot;
+            <div class="counter">{{ object.num_hits }} {% trans "hits" %}</div>
+        </div>
+    </header>
+    <div class="module-body inner">
+        {{ object.content|markdown|safe }}
+    </div>
+    <footer class="module-footer">
+        <div class="fb-like" data-href="http://{{ site.domain }}{{ object.get_absolute_url }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true">Tweet</a>
+    </footer>
+</article>
+
+{% if object.replies.count %}
+<section class="module">
+    <header class="module-header inner">
+        {% blocktrans with number=object.replies.all|length %}
+            {{ number }} replies
+        {% endblocktrans %}
+    </header>
+    {% for reply in page_obj %}
+        <article class="reply">
+            <header>
+                <a href="{% url 'userena_profile_detail' reply.author.username %}" class="avatar"><img src="{{ reply.author.profile.get_mugshot_url }}" alt=""></a>
+                <div class="meta">
+                    <a href="{% url 'userena_profile_detail' reply.author.username %}" class="author">{{ reply.author.username }}</a>
+                    &middot;
+                    <div class="created-on">{{ reply.created_on|naturaltime }}</div>
+                </div>
+            </header>
+            <div class="inner">
+                {{ reply.content|markdown|safe }}
+            </div>
+        </article>
+    {% endfor %}
+    <footer class="module-footer">
+        {% include "module/pagination.html" %}
+    </footer>
+</section>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <div class="module" style="padding:15px">
+        <form action="{% url 'reply_create' object.id %}" method="post">{% csrf_token %}
+            {{ form.content|bootstrap }}
+            <input class="btn btn-success" type="submit" value="Submit" />
+        </form>
+    </div>
+
+{% else %}
+    <div class="module">
+        <div style="padding: 20px;">
+            <div class="alert alert-info">{% trans "Reply after login." %}</div>
+            <a href="{% url 'userena_signin' %}" class="btn btn-success">{% trans "Signin" %}</a>
+        </div>
+    </div>
+{% endif %}
 {% endblock content %}
+{% block js %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+{% endblock js %}

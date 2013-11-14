@@ -1,4 +1,20 @@
 {% extends "base.html" %}
+{% load i18n %}
+{% block subtitle %}{{ object.name }}{% endblock subtitle %}
 {% block content %}
-    <p>{{ object.name }}</p>
+    <div class="module">
+        <div class="module-header">
+            <ol class="breadcrumb">
+            <li><a href="{% url 'forum_index' %}">{% trans "Home" %}</a></li>
+            <li><a href="{% url 'node_index' %}">{% trans "Node" %}</a></li>
+            <li class="active">{{ object.name }}</li>
+        </ol>
+        </div>
+        <div class="module-body">
+            {% include "module/topic_list.html" with show_node=False %}
+        </div>
+        <div class="module-footer">
+            {% include "module/pagination.html" %}
+        </div>
+    </div>
 {% endblock content %}
