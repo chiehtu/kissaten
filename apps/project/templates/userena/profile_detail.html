@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n markdown %}
+{% block subtitle %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock subtitle %}
+{% block content %}
+    <div class="module user-info">
+        <div class="module-body">
+            <a href="{% url 'userena_profile_detail' profile.user.username %}" class="avatar"><img src="{{ profile.get_mugshot_url }}" alt=""></a>
+            <ul>
+                <li>
+                    {% blocktrans with id=profile.user.id %}
+                        {{ id }}
+                    {% endblocktrans %}
+                </li>
+                <li>
+                    ID:
+                    {{ profile.user.username }}
+                </li>
+                <li>
+                    <label>{% trans "City:" %}</label>
+                    <span>{{ profile.city }}</span>
+                </li>
+                <li>
+                    {% trans "Website:" %}
+                    <a href="{{ profile.website }}">{{ profile.website }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% if profile.about_me %}
+        <div class="module">
+            <div class="module-body inner">
+                {{ profile.about_me|markdown|safe }}
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}
+{% block sidebar %}
+    {% if user.username == profile.user.username %}
+        <ul class="list-group">
+            <li class="list-group-item"><a href="{% url 'userena_profile_detail' user.username %}">{% trans 'View profile' %}</a></li>
+            <li class="list-group-item"><a href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit profile" %}</a></li>
+            <li class="list-group-item"><a href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a></li>
+            <li class="list-group-item"><a href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a></li>
+        </ul>
+    {% endif %}
+{% endblock sidebar %}

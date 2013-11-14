@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n bootstrap %}
+{% block subtitle %}{% trans "Signin" %}{% endblock subtitle %}
+{% block main %}
+    <form class="form-single" action="" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            {% if field.name == 'remember_me' %}
+                <div class="checkbox">
+                    <label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>
+                </div>
+            {% else %}
+                <div class="form-group">
+                    {{ field|bootstrap }}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <button type="submit" class="btn btn-success">{% trans "Signin" %}</button>
+        <a href="{% url 'userena_password_reset' %}">{% trans "Forgot your password?" %}</a>
+    </form>
+{% endblock main %}

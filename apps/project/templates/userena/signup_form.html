@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n bootstrap %}
+{% block subtitle %}{% trans "Signup" %}{% endblock subtitle %}
+{% block main %}
+    <form class="form-single" action="" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            {% if field.name == 'tos' %}
+                <div class="checkbox">
+                    <label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>
+                </div>
+            {% else %}
+                <div class="form-group">
+                    {{ field|bootstrap }}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <button type="submit" class="btn btn-success">{% trans "Signup" %}</button>
+    </form>
+{% endblock main %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block subtitle %}{% trans 'Member' %}{% endblock subtitle %}
+{% block content %}
+    <div class="module">
+        <div class="module-header">
+
+        </div>
+        <div class="module-body">
+            <div class="items">
+            {% for profile in profile_list %}
+                <div class="item">
+                <a class="avatar" href="{% url 'userena_profile_detail' profile.user.username %}"><img src="{{ profile.get_mugshot_url }}" /></a>
+                <h3 class="title"><a href="{% url 'userena_profile_detail' profile.user.username %}">{{ profile.user.username }}</a></h3>
+                <div class="meta">
+                    {{ profile.user.date_joined }}
+                    &middot;
+                    {{ profile.city }}
+                </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="module-footer">
+            {% include "module/pagination.html" %}
+        </div>
+    </div>
+{% endblock content %}
