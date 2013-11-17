@@ -5,6 +5,7 @@ from forum.views.node import (NodeIndexView, NodeCreateView,
 from forum.views.topic import (ForumIndexView, TopicCreateView,
                                TopicDetailView, TopicEditView)
 from forum.views.reply import ReplyCreateView, ReplyEditView
+from forum.feeds import LatestTopicsFeed
 
 
 topic_patterns = patterns(
@@ -34,4 +35,5 @@ urlpatterns = patterns(
     url(r'^$', ForumIndexView.as_view(), name='forum_index'),
     (r'^topic/', include(topic_patterns)),
     (r'^node/', include(node_patterns)),
+    (r'^feed/$', LatestTopicsFeed()),
 )
