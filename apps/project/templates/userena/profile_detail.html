@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n markdown %}
+{% load i18n markdown humanize %}
 {% block subtitle %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock subtitle %}
 {% block content %}
     <div class="module user-info">
@@ -7,21 +7,24 @@
             <a href="{% url 'userena_profile_detail' profile.user.username %}" class="avatar"><img src="{{ profile.get_mugshot_url }}" alt=""></a>
             <ul>
                 <li>
-                    {% blocktrans with id=profile.user.id %}
-                        {{ id }}
+                    <label></label>
+                    <span>
+                    {% blocktrans with id=profile.user.id|ordinal %}
+                        The {{ id }} member.
                     {% endblocktrans %}
+                    </span>
                 </li>
                 <li>
-                    ID:
-                    {{ profile.user.username }}
+                    <label>ID:</label>
+                    <span>{{ profile.user.username }}</span>
                 </li>
                 <li>
                     <label>{% trans "City:" %}</label>
                     <span>{{ profile.city }}</span>
                 </li>
                 <li>
-                    {% trans "Website:" %}
-                    <a href="{{ profile.website }}">{{ profile.website }}</a>
+                    <label>{% trans "Website:" %}</label>
+                    <span><a href="{{ profile.website }}">{{ profile.website }}</a></span>
                 </li>
             </ul>
         </div>
