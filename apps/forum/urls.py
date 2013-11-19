@@ -7,6 +7,7 @@ from forum.views.node import (NodeIndexView, NodeCreateView,
 from forum.views.topic import (ForumIndexView, TopicCreateView,
                                TopicDetailView, TopicEditView)
 from forum.views.reply import ReplyCreateView, ReplyEditView
+from forum.feeds import LatestTopicsFeed
 
 
 topic_patterns = patterns(
@@ -37,4 +38,5 @@ urlpatterns = patterns(
     (r'^topic/', include(topic_patterns)),
     (r'^node/', include(node_patterns)),
     (r'^markdown/$', MarkdownView.as_view()),
+    (r'^feed/$', LatestTopicsFeed()),
 )

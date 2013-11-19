@@ -28,9 +28,8 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': dj_database_url.config(default=Path(
-                                      'sqlite:////%s/default.db' % PROJECT_ROOT
-                                      ).norm())
+    'default': dj_database_url.config(default=
+                                      'sqlite:////%s/default.db' % Path(PROJECT_ROOT).norm())
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
