@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 
+from forum.views.base import MarkdownView
+
 from forum.views.node import (NodeIndexView, NodeCreateView,
                               NodeEditView, NodeDetailView)
 from forum.views.topic import (ForumIndexView, TopicCreateView,
@@ -34,4 +36,5 @@ urlpatterns = patterns(
     url(r'^$', ForumIndexView.as_view(), name='forum_index'),
     (r'^topic/', include(topic_patterns)),
     (r'^node/', include(node_patterns)),
+    (r'^markdown/$', MarkdownView.as_view()),
 )

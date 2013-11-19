@@ -212,4 +212,5 @@ USERENA_DEFAULT_PRIVACY = 'open'
 
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
+    ('text/coffeescript', 'coffee --compile --stdio'),
 )

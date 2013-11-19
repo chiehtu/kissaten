@@ -9,7 +9,7 @@
     {% compress css %}
     <link type="text/less" href="{{ STATIC_URL }}forum/stylesheets/style.less"  rel="stylesheet">
     <link type="text/css" href="{{ STATIC_URL }}forum/stylesheets/pygments.css" rel="stylesheet">
-    {% endcompress css %}
+    {% endcompress %}
 </head>
 <body>
     <header class="navbar navbar-inverse" role="banner">
@@ -75,6 +75,9 @@
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    {% compress js %}
+        <script type="text/coffeescript" charset="utf-8" src="{{ STATIC_URL }}forum/javascripts/markdown.coffee"></script>
+    {% endcompress %}
     {% block js %}
 
     {% endblock js %}

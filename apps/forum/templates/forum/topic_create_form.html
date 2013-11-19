@@ -6,7 +6,8 @@
         <div class="module-body inner">
             <form action="" method="post">{% csrf_token %}
                 {{ form|bootstrap }}
-                <input class="btn btn-success" type="submit" value="Submit" />
+                <button class="btn btn-warning preview" data-target="#id_content">{% trans "Preview" %}</button>
+                <button class="btn btn-success" type="submit">{% trans "Submit" %}</button>
             </form>
         </div>
     </div>
