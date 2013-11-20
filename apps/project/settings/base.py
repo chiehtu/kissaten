@@ -1,5 +1,6 @@
 import os
 from django.core.exceptions import ImproperlyConfigured
+from django.utils.translation import ugettext_lazy as _
 
 import dj_database_url
 from unipath import Path
@@ -43,7 +44,7 @@ TIME_ZONE = 'Asia/Taipei'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'zh-TW'
+LANGUAGE_CODE = 'zh-tw'
 
 SITE_ID = 1
 
@@ -188,10 +189,9 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-gettext = lambda s: s
 LANGUAGES = (
-    ('en', gettext('English')),
-    ('zh-tw', gettext('Traditional Chinese')),
+    ('en', _('English')),
+    ('zh-tw', _('Traditional Chinese')),
 )
 
 ANONYMOUS_USER_ID = -1
