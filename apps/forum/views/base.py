@@ -6,6 +6,7 @@ from django.views.generic.edit import UpdateView
 from braces.views import LoginRequiredMixin
 from django_misaka.templatetags.markdown import markdown
 
+
 class BaseEditView(UpdateView):
     def get_object(self):
         obj = super(BaseEditView, self).get_object()
@@ -22,8 +23,8 @@ class BaseEditView(UpdateView):
         return super(BaseEditView, self).form_valid(form)
 
 
-class MarkdownView(View):
+class MarkdownView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
-        content = request.POST.get('content')
+        content = request.POST.get('content', '')
 
         return HttpResponse(markdown(content))

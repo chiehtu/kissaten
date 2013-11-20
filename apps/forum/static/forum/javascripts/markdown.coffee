@@ -2,7 +2,7 @@ getCookie = (name) ->
     cookieValue = null
 
     if document.cookie and document.cookie isnt ''
-        for cookie in (jQuery.trim(cookie) for cookie in document.cookie.split(';'))
+        for cookie in (jQuery.trim(raw) for raw in document.cookie.split(';'))
             if cookie.substring(0, name.length + 1) is (name + '=')
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1))
                 break
