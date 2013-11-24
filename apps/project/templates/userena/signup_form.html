@@ -17,5 +17,11 @@
             {% endif %}
         {% endfor %}
         <button type="submit" class="btn btn-success">{% trans "Signup" %}</button>
+        <div style="border-top: 1px solid #ddd; margin-top: 8px; padding-top:8px; text-align: center;">
+            <a href="{% url 'socialauth_begin' 'facebook' %}" class="btn btn-primary btn-xs"><i class="fa fa-facebook"></i> Facebook</a>
+            <a href="{% url 'socialauth_begin' 'github' %}" class="btn btn-default btn-xs"><i class="fa fa-github"></i> Github</a>
+            <a href="{% url 'socialauth_begin' 'google-oauth2' %}" class="btn btn-danger btn-xs"><i class="fa fa-google-plus"></i> Google</a>
+            <a href="{% url 'socialauth_begin' 'twitter' %}" class="btn btn-info btn-xs"><i class="fa fa-twitter"></i> Twitter</a>
+        </div>
     </form>
 {% endblock main %}
