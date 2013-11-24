@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'bootstrapform',
     'compressor',
     'django_misaka',
+    'social_auth',
     'easy_thumbnails',
     'guardian',
     'south',
@@ -186,6 +187,10 @@ LOGGING = {
 AUTHENTICATION_BACKENDS = (
     'userena.backends.UserenaAuthenticationBackend',
     'guardian.backends.ObjectPermissionBackend',
+    # 'social_auth.backends.facebook.FacebookBackend',
+    # 'social_auth.backends.contrib.github.GithubBackend',
+    # 'social_auth.backends.google.GoogleOAuth2Backend',
+    # 'social_auth.backends.twitter.TwitterBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -207,6 +212,36 @@ LOGIN_URL = '/account/signin/'
 LOGOUT_URL = '/account/signout/'
 
 USERENA_DEFAULT_PRIVACY = 'open'
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_auth.backends.pipeline.social.social_auth_user',
+    #'social_auth.backends.pipeline.associate.associate_by_email',
+    'social_auth.backends.pipeline.user.get_username',
+    'social_auth.backends.pipeline.user.create_user',
+    'account.pipeline.create_profile',
+    'account.pipeline.set_guardian_permissions',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details'
+)
+
+# FACEBOOK_APP_ID = get_env_var('FACEBOOK_APP_ID')
+
+# FACEBOOK_API_SECRET = get_env_var('FACEBOOK_API_SECRET')
+
+# GOOGLE_OAUTH2_CLIENT_ID = get_env_var('GOOGLE_OAUTH2_CLIENT_ID')
+
+# GOOGLE_OAUTH2_CLIENT_SECRET = get_env_var('GOOGLE_OAUTH2_CLIENT_SECRET')
+
+# GITHUB_APP_ID = get_env_var('GITHUB_APP_ID')
+
+# GITHUB_API_SECRET = get_env_var('GITHUB_API_SECRET')
+
+# TWITTER_CONSUMER_KEY = get_env_var('TWITTER_CONSUMER_KEY')
+
+# TWITTER_CONSUMER_SECRET = get_env_var('TWITTER_CONSUMER_SECRET')
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
