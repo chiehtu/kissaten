@@ -1,0 +1,20 @@
+{% load i18n %}
+<div class="panel panel-default site-statistics">
+    <div class="panel-heading">
+        {% trans "Site statistics" %}
+    </div>
+    <table>
+        <tr>
+            <th>{% trans "Member" %}</th>
+            <td>{{ num_members }}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Topic" %}</th>
+            <td>{{ num_topics }}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Reply" %}</th>
+            <td>{{ num_replies }}</td>
+        </tr>
+    </table>
+</div>
