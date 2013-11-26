@@ -55,6 +55,7 @@
     <div class="module" style="padding:15px">
         <form action="{% url 'reply_create' object.id %}" method="post">{% csrf_token %}
             {{ form.content|bootstrap }}
+            <button class="btn btn-warning preview" data-target="#id_content">{% trans "Preview" %}</button>
             <input class="btn btn-success" type="submit" value="Submit" />
         </form>
     </div>
