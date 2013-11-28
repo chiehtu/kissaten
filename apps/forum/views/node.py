@@ -1,9 +1,8 @@
-from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
-from braces.views import LoginRequiredMixin
+from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
 
 from forum.forms import NodeForm
 from forum.models import Node
@@ -14,15 +13,9 @@ class NodeIndexView(ListView):
     paginate_by = 10
 
 
-class NodeCreateView(LoginRequiredMixin, CreateView):
+class NodeCreateView(LoginRequiredMixin, StaffuserRequiredMixin, CreateView):
     form_class = NodeForm
     template_name = 'forum/node_create_form.html'
-
-    def get(self, request, *args, **kwargs):
-        if not self.request.user.is_staff:
-            raise Http404
-
-        return super(NodeCreateView, self).get(request, *args, **kwargs)
 
 
 class NodeDetailView(SingleObjectMixin, ListView):
@@ -45,16 +38,10 @@ class NodeDetailView(SingleObjectMixin, ListView):
         return self.object.topics.all()
 
 
-class NodeEditView(LoginRequiredMixin, UpdateView):
+class NodeEditView(LoginRequiredMixin, StaffuserRequiredMixin, UpdateView):
     model = Node
     form_class = NodeForm
     template_name = 'forum/node_edit_form.html'
-
-    def get(self, request, *args, **kwargs):
-        if not self.request.user.is_staff:
-            raise Http404
-
-        return super(NodeEditView, self).get(request, *args, **kwargs)
 
     def get_object(self):
         name = self.kwargs['name_slug']
