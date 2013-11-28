@@ -1,0 +1,401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-28 03:34+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps/account/models.py:11
+msgid "user"
+msgstr "使用者"
+
+#: apps/account/models.py:13
+msgid "city"
+msgstr "城市"
+
+#: apps/account/models.py:14
+msgid "about me"
+msgstr "關於我"
+
+#: apps/account/models.py:15
+msgid "website"
+msgstr "網站"
+
+#: apps/account/models.py:18
+msgid "profile"
+msgstr "個人資料"
+
+#: apps/account/models.py:19
+msgid "profiles"
+msgstr "個人資料"
+
+#: apps/forum/models.py:9
+msgid "name"
+msgstr "節點名稱"
+
+#: apps/forum/models.py:10
+msgid "description"
+msgstr "描述"
+
+#: apps/forum/models.py:12
+msgid "number of topics"
+msgstr "主題數"
+
+#: apps/forum/models.py:14 apps/forum/models.py:52 apps/forum/models.py:82
+msgid "created on"
+msgstr "創建於"
+
+#: apps/forum/models.py:15 apps/forum/models.py:53 apps/forum/models.py:83
+msgid "updated on"
+msgstr "更新於"
+
+#: apps/forum/models.py:18 apps/forum/models.py:37
+msgid "node"
+msgstr "節點"
+
+#: apps/forum/models.py:19
+msgid "nodes"
+msgstr "節點"
+
+#: apps/forum/models.py:31 apps/forum/models.py:71
+msgid "author"
+msgstr "作者"
+
+#: apps/forum/models.py:34 apps/forum/models.py:74
+msgid "author's ip"
+msgstr "作者 IP"
+
+#: apps/forum/models.py:40
+msgid "title"
+msgstr "標題"
+
+#: apps/forum/models.py:41 apps/forum/models.py:80
+msgid "content"
+msgstr "內文"
+
+#: apps/forum/models.py:43
+msgid "number of hits"
+msgstr "點閱數"
+
+#: apps/forum/models.py:44
+msgid "number of replies"
+msgstr "回覆數"
+
+#: apps/forum/models.py:46
+msgid "last reply on"
+msgstr "最後回覆於"
+
+#: apps/forum/models.py:49
+msgid "locked"
+msgstr "鎖定"
+
+#: apps/forum/models.py:50
+msgid "sticky"
+msgstr "置頂"
+
+#: apps/forum/models.py:56 apps/forum/models.py:77
+msgid "topic"
+msgstr "主題"
+
+#: apps/forum/models.py:57
+msgid "topics"
+msgstr "主題"
+
+#: apps/forum/models.py:86
+msgid "reply"
+msgstr "回覆"
+
+#: apps/forum/models.py:87
+msgid "replies"
+msgstr "回覆"
+
+#: apps/forum/templates/forum/index.html:8
+#: apps/forum/templates/forum/node_detail.html:8
+#: apps/forum/templates/forum/node_list.html:8
+#: apps/project/templates/base.html:28
+msgid "Home"
+msgstr "首頁"
+
+#: apps/forum/templates/forum/index.html:9
+msgid "Latest topics"
+msgstr "最近的主題"
+
+#: apps/forum/templates/forum/node_create_form.html:3
+#: apps/project/templates/base.html:35
+msgid "New node"
+msgstr "新節點"
+
+#: apps/forum/templates/forum/node_create_form.html:9
+#: apps/forum/templates/forum/reply_edit_form.html:9
+#: apps/forum/templates/forum/topic_create_form.html:9
+#: apps/forum/templates/forum/topic_detail.html:62
+msgid "Preview"
+msgstr "預覽"
+
+#: apps/forum/templates/forum/node_create_form.html:10
+#: apps/forum/templates/forum/reply_edit_form.html:10
+#: apps/forum/templates/forum/topic_create_form.html:10
+#: apps/forum/templates/forum/topic_detail.html:63
+msgid "Submit"
+msgstr "送出"
+
+#: apps/forum/templates/forum/node_detail.html:9
+#: apps/forum/templates/forum/node_list.html:3
+#: apps/forum/templates/forum/node_list.html:9
+#: apps/project/templates/base.html:29
+msgid "Node"
+msgstr "節點"
+
+#: apps/forum/templates/forum/node_edit_form.html:3
+msgid "Edit node"
+msgstr "編輯節點"
+
+#: apps/forum/templates/forum/node_list.html:18
+#, python-format
+msgid "Topics(%(topics)s)"
+msgstr "主題（%(topics)s）"
+
+#: apps/forum/templates/forum/reply_edit_form.html:3
+msgid "Edit reply"
+msgstr "編輯回覆"
+
+#: apps/forum/templates/forum/topic_create_form.html:3
+#: apps/project/templates/base.html:37
+msgid "New topic"
+msgstr "新主題"
+
+#: apps/forum/templates/forum/topic_detail.html:14
+#, python-format
+msgid "%(num_hits)s hits"
+msgstr "%(num_hits)s 次點閱"
+
+#: apps/forum/templates/forum/topic_detail.html:20
+#: apps/forum/templates/forum/topic_detail.html:47
+msgid "Edit"
+msgstr "編輯"
+
+#: apps/forum/templates/forum/topic_detail.html:32
+#, python-format
+msgid "%(number)s replies"
+msgstr "%(number)s 條回覆"
+
+#: apps/forum/templates/forum/topic_detail.html:70
+msgid "Reply after login."
+msgstr "登入後回覆。"
+
+#: apps/forum/templates/forum/topic_detail.html:71
+#: apps/project/templates/base.html:47
+#: apps/project/templates/userena/signin_form.html:3
+#: apps/project/templates/userena/signin_form.html:19
+msgid "Signin"
+msgstr ""
+
+#: apps/forum/templates/forum/topic_edit_form.html:3
+msgid "Edit topic"
+msgstr "編輯主題"
+
+#: apps/project/settings/base.py:210
+msgid "English"
+msgstr ""
+
+#: apps/project/settings/base.py:211
+msgid "Traditional Chinese"
+msgstr ""
+
+#: apps/project/templates/base.html:30
+#: apps/project/templates/module/site_statistics.html:8
+#: apps/project/templates/userena/profile_list.html:3
+msgid "Member"
+msgstr "會員"
+
+#: apps/project/templates/base.html:41
+msgid "Account"
+msgstr "帳號"
+
+#: apps/project/templates/base.html:42
+msgid "Signout"
+msgstr "登出"
+
+#: apps/project/templates/base.html:46
+#: apps/project/templates/userena/signup_form.html:3
+#: apps/project/templates/userena/signup_form.html:19
+msgid "Signup"
+msgstr ""
+
+#: apps/project/templates/module/site_statistics.html:4
+msgid "Site statistics"
+msgstr "網站統計"
+
+#: apps/project/templates/module/site_statistics.html:12
+msgid "Topic"
+msgstr "主題"
+
+#: apps/project/templates/module/site_statistics.html:16
+msgid "Reply"
+msgstr "回覆"
+
+#: apps/project/templates/module/topic_list.html:23
+msgid "No topic."
+msgstr "沒有主題。"
+
+#: apps/project/templates/userena/email_form.html:3
+#: apps/project/templates/userena/email_form.html:7
+msgid "Change email address"
+msgstr ""
+
+#: apps/project/templates/userena/email_form.html:12
+#: apps/project/templates/userena/email_form.html:23
+#: apps/project/templates/userena/password_form.html:23
+#: apps/project/templates/userena/profile_detail.html:44
+#: apps/project/templates/userena/profile_form.html:23
+msgid "Change email"
+msgstr ""
+
+#: apps/project/templates/userena/email_form.html:20
+#: apps/project/templates/userena/password_form.html:20
+#: apps/project/templates/userena/profile_detail.html:41
+#: apps/project/templates/userena/profile_form.html:20
+msgid "View profile"
+msgstr ""
+
+#: apps/project/templates/userena/email_form.html:21
+#: apps/project/templates/userena/password_form.html:21
+#: apps/project/templates/userena/profile_detail.html:42
+#: apps/project/templates/userena/profile_form.html:21
+msgid "Edit profile"
+msgstr ""
+
+#: apps/project/templates/userena/email_form.html:22
+#: apps/project/templates/userena/password_form.html:3
+#: apps/project/templates/userena/password_form.html:22
+#: apps/project/templates/userena/profile_detail.html:43
+#: apps/project/templates/userena/profile_form.html:22
+msgid "Change password"
+msgstr ""
+
+#: apps/project/templates/userena/password_complete.html:3
+msgid "Password changed"
+msgstr ""
+
+#: apps/project/templates/userena/password_complete.html:6
+msgid "From now on you can use your new password to signin"
+msgstr ""
+
+#: apps/project/templates/userena/password_form.html:7
+#: apps/project/templates/userena/password_form.html:12
+msgid "Change Password"
+msgstr ""
+
+#: apps/project/templates/userena/password_reset_complete.html:3
+msgid "Password reset"
+msgstr ""
+
+#: apps/project/templates/userena/password_reset_complete.html:6
+#, python-format
+msgid ""
+"You can now <a href=\"%(signin_url)s\">signin</a> with your new password."
+msgstr ""
+
+#: apps/project/templates/userena/password_reset_confirm_form.html:3
+#: apps/project/templates/userena/password_reset_confirm_form.html:8
+#: apps/project/templates/userena/password_reset_form.html:3
+msgid "Reset password"
+msgstr ""
+
+#: apps/project/templates/userena/password_reset_confirm_form.html:6
+#: apps/project/templates/userena/password_reset_form.html:6
+msgid "Reset Password"
+msgstr ""
+
+#: apps/project/templates/userena/password_reset_done.html:3
+msgid "Password reset email sent"
+msgstr ""
+
+#: apps/project/templates/userena/password_reset_done.html:5
+msgid ""
+"An e-mail has been sent to you which explains how to reset your password."
+msgstr ""
+
+#: apps/project/templates/userena/password_reset_form.html:8
+msgid "Send password"
+msgstr ""
+
+#: apps/project/templates/userena/profile_detail.html:3
+#, python-format
+msgid "%(username)s's profile."
+msgstr ""
+
+#: apps/project/templates/userena/profile_detail.html:12
+#, python-format
+msgid "The %(id)s member."
+msgstr ""
+
+#: apps/project/templates/userena/profile_detail.html:20
+msgid "City:"
+msgstr "城市："
+
+#: apps/project/templates/userena/profile_detail.html:24
+msgid "Website:"
+msgstr "網站："
+
+#: apps/project/templates/userena/profile_form.html:3
+msgid "Account setup"
+msgstr ""
+
+#: apps/project/templates/userena/profile_form.html:7
+msgid "Edit Profile"
+msgstr ""
+
+#: apps/project/templates/userena/profile_form.html:12
+msgid "Save changes"
+msgstr ""
+
+#: apps/project/templates/userena/signin_form.html:20
+msgid "Forgot your password?"
+msgstr ""
+
+#: apps/project/templates/userena/signout.html:3
+msgid "Signed out"
+msgstr ""
+
+#: apps/project/templates/userena/signout.html:5
+msgid "You have been signed out. Till we meet again."
+msgstr ""
+
+#: apps/project/templates/userena/signup_complete.html:3
+msgid "Signup almost done!"
+msgstr ""
+
+#: apps/project/templates/userena/signup_complete.html:7
+msgid "Thank you for signing up with us!"
+msgstr ""
+
+#: apps/project/templates/userena/signup_complete.html:11
+msgid ""
+"You have been sent an e-mail with an activation link to the supplied email."
+msgstr ""
+
+#: apps/project/templates/userena/signup_complete.html:12
+#, python-format
+msgid ""
+"We will store your signup information for %(userena_activation_days)s days "
+"on our server. "
+msgstr ""
+
+#: apps/project/templates/userena/signup_complete.html:14
+msgid "You can now use the supplied credentials to signin."
+msgstr ""
+
+#~ msgid "hits"
+#~ msgstr "點閱"
