@@ -15,9 +15,7 @@
             <div class="item">
                 <h3 class="title"><a href="{% url 'node_detail' node.name %}">{{ node.name }}</a></h3>
                 <div class="meta">
-                    {% blocktrans with topics=node.topics.all|length %}
-                        Topics({{ topics }})
-                    {% endblocktrans %}
+                    {% blocktrans with topics=node.topics.all|length %}Topics({{ topics }}){% endblocktrans %}
                 </div>
             </div>
         {% endfor %}
