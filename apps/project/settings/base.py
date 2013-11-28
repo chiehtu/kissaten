@@ -211,6 +211,10 @@ LANGUAGES = (
     ('zh-tw', _('Traditional Chinese')),
 )
 
+LOCALE_PATHS = (
+    PROJECT_ROOT.child('locale'),
+)
+
 ANONYMOUS_USER_ID = -1
 
 AUTH_PROFILE_MODULE = 'account.Profile'
