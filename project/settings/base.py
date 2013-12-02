@@ -17,7 +17,7 @@ def get_env_var(varname, default=None):
         msg = "You must set the %s environment variable." % varname
         raise ImproperlyConfigured(msg)
 
-PROJECT_ROOT = Path(__file__).ancestor(4)
+PROJECT_ROOT = Path(__file__).ancestor(3)
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -136,7 +136,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    PROJECT_ROOT.child('apps').child('project').child('templates')
+    PROJECT_ROOT.child('project').child('templates')
 )
 
 INSTALLED_APPS = (
