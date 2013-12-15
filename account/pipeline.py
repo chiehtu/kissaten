@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from guardian.shortcuts import assign, get_perms_for_model
+from guardian.shortcuts import assign_perm, get_perms_for_model
 
 from account.models import Profile
 
@@ -20,7 +20,7 @@ def set_guardian_permissions(user=None, profile=None, *args, **kwargs):
 
     if profile:
         for perm in get_perms_for_model(Profile):
-            assign(perm.codename, user, profile)
+            assign_perm(perm.codename, user, profile)
 
     for perm in get_perms_for_model(User)[1:]:
-        assign(perm.codename, user, user)
+        assign_perm(perm.codename, user, user)
