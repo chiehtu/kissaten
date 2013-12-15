@@ -15,12 +15,12 @@ def create_profile(user=None, profile=None, *args, **kwargs):
 
 
 def set_guardian_permissions(user=None, profile=None, *args, **kwargs):
-    if not user or user.is_authenticated():
+    if not user or not user.is_authenticated():
         return
 
     if profile:
         for perm in get_perms_for_model(Profile):
             assign(perm.codename, user, profile)
 
-    for perm in get_perms_for_model(User):
+    for perm in get_perms_for_model(User)[1:]:
         assign(perm.codename, user, user)
